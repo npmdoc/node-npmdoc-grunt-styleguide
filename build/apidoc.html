@@ -1,0 +1,413 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/indieisaconcept/grunt-styleguide"
+
+    >grunt-styleguide (v0.2.17)</a>
+</h1>
+<h4>Universal CSS styleguide generator for grunt. Easily integrate Styledocco or KSS styleguide generation into your development workflow.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grunt-styleguide">module grunt-styleguide</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-styleguide.grunt-styleguide">
+            function <span class="apidocSignatureSpan"></span>grunt-styleguide
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">grunt-styleguide.</span>index</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">grunt-styleguide.</span>styledocco</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grunt-styleguide.index">module grunt-styleguide.index</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-styleguide.index.init">
+            function <span class="apidocSignatureSpan">grunt-styleguide.index.</span>init
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grunt-styleguide.styledocco">module grunt-styleguide.styledocco</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-styleguide.styledocco.init">
+            function <span class="apidocSignatureSpan">grunt-styleguide.styledocco.</span>init
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grunt-styleguide" id="apidoc.module.grunt-styleguide">module grunt-styleguide</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-styleguide.grunt-styleguide" id="apidoc.element.grunt-styleguide.grunt-styleguide">
+        function <span class="apidocSignatureSpan"></span>grunt-styleguide
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">grunt-styleguide = function (grunt) {
+
+    &#x27;use strict&#x27;;
+
+    // Project configuration.
+    grunt.initConfig({
+
+        task: {
+
+            fixtures: &#x27;test/fixtures&#x27;,
+            tmp: &#x27;tmp&#x27;
+
+        },
+
+        jshint: {
+
+            options: {
+                jshintrc: &#x27;.jshintrc&#x27;
+            },
+
+            all_files: [&#x27;Gruntfile.js&#x27;, &#x27;tasks/**/*.js&#x27;, &#x27;&#x3c;%= nodeunit.tests %&#x3e;&#x27;]
+
+        },
+
+        // Before generating any new files, remove any previously-created files.
+        clean: {
+            test: [&#x27;tmp&#x27;, &#x27;.sass-cache&#x27;]
+        },
+
+        // Configuration to be run (and then tested).
+        styleguide: {
+
+            styledocco: {
+
+                options: {
+
+                    framework: {
+                        name: &#x27;styledocco&#x27;
+                    },
+
+                    name: &#x27;Style Guide&#x27;,
+
+                    template: {
+                        include: [&#x27;templates/kss/public/prettify.js&#x27;]
+                    }
+
+                },
+
+                files: {
+                    &#x27;&#x3c;%= task.tmp %&#x3e;/styledocco/docs/bootstrap/less&#x27;: &#x27;&#x3c;%= task.fixtures %&#x3e;/styledocco/docs/bootstrap/**/*.less&#x27;,
+                    &#x27;&#x3c;%= task.tmp %&#x3e;/styledocco/docs/bootstrap/sass&#x27;: &#x27;&#x3c;%= task.fixtures %&#x3e;/styledocco/docs/bootstrap/**/*.{scss
+,sass}&#x27;
+                }
+
+            },
+
+            kss: {
+
+                options: {
+
+                    framework: {
+                        name: &#x27;kss&#x27;
+                    },
+
+                    name: &#x27;Style Guide&#x27;,
+
+                    template: {
+                        src: &#x27;kss&#x27;
+                        // include: [&#x27;templates/kss/public/prettify.js&#x27;] - includes deprecated
+                    }
+
+                },
+
+                files: {
+                    &#x27;&#x3c;%= task.tmp %&#x3e;/kss/docs/less&#x27;: &#x27;&#x3c;%= task.fixtures %&#x3e;/generic/docs/styles.less&#x27;
+                }
+
+            }
+
+        },
+
+        // Unit tests.
+        nodeunit: {
+            tests: [&#x27;test/*_test.js&#x27;]
+        }
+
+    });
+
+    // Actually load this plugin&#x27;s task(s).
+    grunt.loadTasks(&#x27;tasks&#x27;);
+
+    // These plugins provide necessary tasks.
+    grunt.loadNpmTasks(&#x27;grunt-contrib-clean&#x27;);
+    grunt.loadNpmTasks(&#x27;grunt-contrib-jshint&#x27;);
+    grunt.loadNpmTasks(&#x27;grunt-contrib-nodeunit&#x27;);
+
+    grunt.registerTask(&#x27;test&#x27;, &#x27;clean styleguide nodeunit&#x27;.split(&#x27; &#x27;));
+
+    // By default, lint and run all tests.
+    grunt.registerTask(&#x27;default&#x27;, &#x27;jshint test&#x27;.split(&#x27; &#x27;));
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grunt-styleguide.index" id="apidoc.module.grunt-styleguide.index">module grunt-styleguide.index</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-styleguide.index.init" id="apidoc.element.grunt-styleguide.index.init">
+        function <span class="apidocSignatureSpan">grunt-styleguide.index.</span>init
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init = function (grunt) {
+
+    var helper = {};
+
+    // note grunt-lib-contrib has been deprecated. Since this is the only method in use,
+    // it has just been ported over from version 0.6.1.
+    // http://github.com/gruntjs/grunt-lib-contrib
+
+    helper.optsToArgs = function(options) {
+
+        var args = [];
+
+        Object.keys(options).forEach(function(flag) {
+            var val = options[flag];
+
+            flag = flag.replace(/[A-Z]/g, function(match) {
+                return &#x27;-&#x27; + match.toLowerCase();
+            });
+
+            if (val === true) {
+                args.push(&#x27;--&#x27; + flag);
+            }
+
+            if (grunt.util._.isString(val)) {
+                args.push(&#x27;--&#x27; + flag, val);
+            }
+
+            if (grunt.util._.isNumber(val)) {
+                args.push(&#x27;--&#x27; + flag, &#x27;&#x27; + val);
+            }
+
+            if (grunt.util._.isArray(val)) {
+                val.forEach(function(arrVal) {
+                    args.push(&#x27;--&#x27; + flag, arrVal);
+                });
+            }
+        });
+
+        return args;
+
+    };
+
+    // ==========================================================================================
+    // findBasePath override (original not working when folders in a tree have the same name)
+    // ==========================================================================================
+
+    helper.findBasePath = function( /* Array */ paths) {
+
+        if (typeof paths === &#x27;string&#x27; &#x26;&#x26; paths.length &#x3e;= 1) {
+            return grunt.util._(path.normalize(paths)).trim(path.sep);
+        }
+
+        paths = grunt.util._.map(paths, function(file) {
+            var sections = [];
+            while ((file = path.dirname(file)) !== &#x27;.&#x27;) {
+                sections.push(file);
+            }
+            return sections;
+        });
+
+        paths = grunt.util._.intersection.apply(this, paths);
+        return paths[0] || &#x27;&#x27;;
+
+    };
+
+    // Return the new helper!
+    return helper;
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// ==================================
+// DEFAULTS
+// ==================================
+
+var fs = require(&#x27;fs&#x27;),
+    path = require(&#x27;path&#x27;),
+    helper = require(&#x27;./helper&#x27;).<span class="apidocCodeKeywordSpan">init</span>(grunt),
+    plugin = {},
+    _ = grunt.util._;
+
+// ==================================
+// PLUGIN DEFAULTS
+// ==================================
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grunt-styleguide.styledocco" id="apidoc.module.grunt-styleguide.styledocco">module grunt-styleguide.styledocco</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-styleguide.styledocco.init" id="apidoc.element.grunt-styleguide.styledocco.init">
+        function <span class="apidocSignatureSpan">grunt-styleguide.styledocco.</span>init
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init = function (grunt) {
+
+    var processors = {
+            &#x27;sass&#x27;: &#x27;sass --compass&#x27;,
+            &#x27;less&#x27;: depBase + &#x27;/.bin/lessc&#x27;,
+            &#x27;stylus&#x27;: depBase + &#x27;/.bin/stylus&#x27;
+        },
+
+        _ = grunt.util._,
+
+        args = [styledocco + &#x27;/bin/styledocco&#x27;];
+
+    return function (styleguide, compile, done) {
+
+        var files = styleguide.files,
+            options = styleguide.framework &#x26;&#x26; styleguide.framework.options || {},
+            preprocessor = !options.preprocessor ? styleguide.preprocessor &#x26;&#x26; processors[styleguide.preprocessor] : options.preprocessor
+;
+
+        // default styledocco options
+        options.name = styleguide.name;
+        options.out = files.dest;
+
+        options.include = _.chain(styleguide.template.include).map(function (/* Object */ item) {
+            return _.pluck(item, &#x27;path&#x27;);
+        }).flatten().value();
+
+        // specify processor if needed
+        if (preprocessor) {
+            options.preprocessor = preprocessor;
+        }
+
+        compile(args.concat([files.base]), options, done);
+
+    };
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// ==================================
+// DEFAULTS
+// ==================================
+
+var fs = require(&#x27;fs&#x27;),
+    path = require(&#x27;path&#x27;),
+    helper = require(&#x27;./helper&#x27;).<span class="apidocCodeKeywordSpan">init</span>(grunt),
+    plugin = {},
+    _ = grunt.util._;
+
+// ==================================
+// PLUGIN DEFAULTS
+// ==================================
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
